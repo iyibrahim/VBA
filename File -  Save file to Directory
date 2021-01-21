@@ -1,0 +1,18 @@
+Sub FinalOutput058519()
+
+Dim Path As String
+Dim Filename1 As String
+
+Workbooks.Open Filename:="C:\Users\davib\Desktop\worksheet\3. JFI\Files from Vantiv\CC 58519 Interchange\YYYY_MM_058519 MMM YY Interchange.xlsm"
+
+Path = "C:\Users\davib\Desktop\worksheet\3. JFI\Files from Vantiv\Z -Interchange Output Final\"
+Filename1 = Workbooks("Interchange Process").Sheets("Macro").Range("B9").Text
+
+Application.DisplayAlerts = False
+
+Workbooks("YYYY_MM_058519 MMM YY Interchange").SaveAs Filename:=Path & Filename1 & ".xlsx", FileFormat:=xlOpenXMLWorkbook
+Application.DisplayAlerts = True
+
+ActiveWorkbook.Close
+
+End Sub

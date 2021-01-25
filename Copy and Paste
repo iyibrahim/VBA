@@ -113,3 +113,6 @@ Selection.PasteSpecial xlPasteValues
 
 Range("B2").Copy Range("E2")
 
+Copy Entire Column
+ Range("B:B").Copy Workbooks("02. mm yy Client Reconciliation").Sheets("V_MsiClientsExt").Range("A:A")
+ Range("FC:FC").Copy Workbooks("02. mm yy Client Reconciliation").Sheets("V_MsiClientsExt").Range("B:B")

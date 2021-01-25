@@ -11,3 +11,8 @@ Set my_range = Workbooks("1b. JFI_Monthly Revenue Worksheet").Sheets("ACH Unauth
 
 LaRo = Range("B2").CurrentRegion.Rows.Count
 Workbooks("Import_Expense_").Sheets("Import_Expense").Range("A2:A" & LaRo) = Workbooks("Residual Process").Sheets("Residual Process").Range("C2").Value
+
+
+Copy Last Cell
+Workbooks("058519").Sheets("Report 1").Range("B5:N" & Cells.SpecialCells(xlCellTypeLastCell).Row).Copy _
+Workbooks("YYYY_MM_058519 MMM YY Interchange").Sheets("Report 1").Range("A2"

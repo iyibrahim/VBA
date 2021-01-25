@@ -116,3 +116,7 @@ Range("B2").Copy Range("E2")
 Copy Entire Column
  Range("B:B").Copy Workbooks("02. mm yy Client Reconciliation").Sheets("V_MsiClientsExt").Range("A:A")
  Range("FC:FC").Copy Workbooks("02. mm yy Client Reconciliation").Sheets("V_MsiClientsExt").Range("B:B")
+ 
+ Equal Copy =
+ Workbooks("1b. JFI_Monthly Revenue Worksheet").Sheets("POS - Worldpay").Range("A11:C150").Value = Workbooks("ECCP").Sheets("RESIDUALS CALCULATION").Range("A1:C140").Value
+

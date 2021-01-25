@@ -1,87 +1,62 @@
-A  Range Copy & Paste
-
-'Find the Last Row
-    
     LastRow = Range("A1").CurrentRegion.Rows.Count
-  
-    Range("A2:M" & LastRow).Copy
-
-
-Workbooks("04. mm yy Dealer Transaction").Sheets("original").Activate
-    
+Range("A2:M" & LastRow).Copy
     Range("A2").PasteSpecial xlPasteAll
-  Workbooks("04. mm yy Dealer Transaction").Save
 
 
-B Selection.Copy
-
-
-'Find the Last Row
-    
-    LastRow = Range("A1").CurrentRegion.Rows.Count
-    
-'Select Table
-    
-        Range("A1:N" & LastRow).Select
- 
- Selection.AutoFilter
-        
-'Filter table
-    
- Selection.AutoFilter Field:=14, Criteria1:="Check"
- 
- Selection.AutoFilter Field:=6, Criteria1:="<>*Loan*"
-
+ Range("A1:N" & LastRow).Select
 Selection.Copy
 
-Workbooks("04. mm yy Dealer Transaction").Sheets("working").Activate
 
-'Find the Last Row
-    
-    LastRow = Range("F1").CurrentRegion.Rows.Count
-    
-'Select Table
-    
-    Range("F2:F" & LastRow).Copy
-    
- Workbooks("04. mm yy Dealer Transaction").Sheets("Sheet1").Activate
- 
-   Range("A2").PasteSpecial xlPasteValues
-   
-  Workbooks("04. mm yy Dealer Transaction").Save
-  
-  
-  Append Copy & Paste
-  
-  'Find the Last Row
+Range("A2:I" & LastRow).Copy Sheets("Loan Repayment").Range("A3")
 
-    Workbooks("04. mm yy Dealer Transaction").Sheets("Sheet1").Activate
-    
+
+Selection.Copy Workbooks("02. mm yy Client Reconciliation").Sheets("Data").Range("A1048576").End(xlUp).Offset(1, 0)
+
+
+Range("B2").Copy Range("E2")
+
+
+LastRow = Range("A2").CurrentRegion.Rows.Count
+Range("A2:L" & LastRow).Copy Workbooks("05. mm yy EOM Disbursements Rec").Sheets("QB").Range("A2")
+
+
+Range("A2:L" & LastRow).Copy
+Workbooks("05. mm yy EOM Disbursements Rec").Sheets("QB").Activate
+Range("A2").PasteSpecial xlPasteFormats
+Workbooks("05. mm yy EOM Disbursements Rec Support").Save
+
+
+ LastRow = Range("F1").CurrentRegion.Rows.Count
+  Workbooks("05. mm yy EOM Disbursements Rec").Sheets("QB").Range("F2:F" & LastRow).Copy
+  Workbooks("05. mm yy EOM Disbursements Rec").Sheets("Rec").Range("N14").PasteSpecial xlPasteValues
+
+
+'Range Copy and paste formats
     LastRow = Range("A2").CurrentRegion.Rows.Count
-    
-'Select Table
-
-Range("A2:B" & LastRow).Copy
-
-'Copy to Sheet TYPE
-
-Workbooks("04. mm yy Dealer Transaction").Sheets("TYPE").Activate
-
-Range("A1048576").End(xlUp).Offset(1, 0).Select
-
-Selection.PasteSpecial xlPasteValues
-
-End Sub
+    Range("A2:G" & LastRow).Copy
+    Workbooks("01. mm yy Advances Rec").Sheets("Dealer transactions query").Activate
+    Range("A2").PasteSpecial xlPasteValues
+    Range("A2").PasteSpecial xlPasteFormats
 
 
-Offset - Copy & Paste
+
+Copy End Xldown
+Workbooks("06. mm yy Client Remittance Inactive Rec 2075.1").Sheets("2.Lookup").Activate
+Workbooks("06. mm yy Client Remittance Inactive Rec 2075.1").Sheets("2.Lookup").Range(Range("E12"), Range("E12").End(xlDown)).Copy
+Workbooks("06. mm yy Client Remittance Inactive Rec 2075.1").Sheets("3. JE").Range("C8").PasteSpecial xlPasteAll
 
 
-Workbooks("04. mm yy Dealer Transaction").Sheets("working").Range("A2:A" & LastRow).Copy
+Absolute Copy
+Workbooks("Datasource").Sheets("EFT Revenue").Range("A1:H30000").Copy
+Workbooks("Commission - Barry Bleuer Model").Worksheets("EFT Revenue").Range("A1").PasteSpecial Paste:=xlPasteValues
 
-Workbooks("02. mm yy Client Reconciliation").Sheets("Data").Activate
 
-Range("A1048576").End(xlUp).Offset(1, 0).Select
+Selection Copy
+ThisWorkbook.Worksheets("Orders").Range("A1:P5000").Select
+'Filter table
+Selection.AutoFilter Field:=9, Criteria1:="Bleuer, Barry "
+'Copy/Paste
+Selection.Copy
+Workbooks("Commission - Barry Bleuer Model").Sheets("Orders").Range("A1").PasteSpecial xlPasteValues
 
-Selection.PasteSpecial xlPasteValues
 

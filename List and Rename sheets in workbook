@@ -1,0 +1,31 @@
+Sub Getsheetnames()
+
+Workbooks("residual process").Sheets("Residual process").Range("b31:b45").Cells.Clear
+
+Workbooks.Open Filename:="C:\Users\davib\Desktop\worksheet\3. JFI\Files from Vantiv\Attachment Download\Attachment Final\ECCP.xlsx"
+
+Dim ws As Worksheet
+Dim r As Integer
+
+r = 31
+
+For Each ws In Workbooks("ECCP").Worksheets
+Workbooks("residual process").Sheets("Residual process").Cells(r, 2).Value = ws.Name
+ r = r + 1
+ Next ws
+ 
+End Sub
+
+Sub Renamesheet()
+
+Dim ws As Worksheet
+Dim r As Integer
+
+r = 31
+
+For Each ws In Workbooks("ECCP").Worksheets
+ws.Name = Workbooks("residual process").Sheets("Residual process").Cells(r, 3).Value
+ r = r + 1
+ Next ws
+
+End Sub

@@ -111,4 +111,5 @@ Workbooks("Import_Expense_").Sheets("Import_Expense").Activate
 Range("B65536").End(xlUp).Offset(1, 0).Select
 Selection.PasteSpecial xlPasteValues
 
+Range("B2").Copy Range("E2")
 

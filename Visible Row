@@ -1,0 +1,41 @@
+Sub Copynow()
+
+Dim LastRow As Long
+
+Sheet2.Activate
+
+LastRow = Range("A2").CurrentRegion.Rows.Count
+
+Range("A2:AY" & LastRow).Cells.Clear
+
+Sheet1.Activate
+
+If ActiveSheet.FilterMode = True Then
+  
+  Range("A1").AutoFilter
+  
+End If
+'Select Table
+
+LastRow = Range("A1").CurrentRegion.Rows.Count
+
+
+        Range("A1:AY" & LastRow).Select
+
+    Selection.AutoFilter Field:=5, Criteria1:="GOFIG", Criteria2:="GOFIG", Operator:=xlAnd
+
+    If Range("A1:A" & LastRow).SpecialCells(xlCellTypeVisible).Count > 1 Then
+    
+    LastRow = Range("A2").CurrentRegion.Rows.Count
+   
+
+    Range("A2:AY" & LastRow).Copy
+
+Sheet2.Activate
+
+Range("A2").PasteSpecial xlPasteAll
+
+ 
+
+
+End Sub

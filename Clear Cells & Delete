@@ -1,0 +1,15 @@
+Range("A:D").Delete
+
+Range("N14:O22").ClearContents
+
+Range("A3:R" & LastRow).ClearContents
+
+
+LastRow = Range("A2").CurrentRegion.Rows.Count
+Range("A2:I" & LastRow).Cells.Clear
+
+
+If ActiveSheet.FilterMode = True Then
+Range("A1").AutoFilter
+ End If
+

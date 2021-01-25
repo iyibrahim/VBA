@@ -76,3 +76,19 @@ Range("B65536").End(xlUp).Offset(1, 0).Select
 Selection.PasteSpecial xlPasteValues
 
 
+set range
+LR = Range("I4").CurrentRegion.Rows.Count
+Workbooks("Import Expense Model").Sheets("NonCheckfree").Range("J4").Copy
+Set my_range = Workbooks("Import Expense Model").Sheets("NonCheckfree").Range("J5:J" & LR) 
+my_range.PasteSpecial Paste:=xlPasteFormulas, Operation:=xlNone
+
+Copy
+Workbooks("ECCP").Sheets("NCSPAYU").Range("A:I").Copy Workbooks("Import Expense Model").Sheets("NCSPAYU").Range("A:I")
+
+
+
+
+
+
+
+

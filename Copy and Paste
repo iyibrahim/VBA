@@ -60,3 +60,13 @@ Selection.Copy
 Workbooks("Commission - Barry Bleuer Model").Sheets("Orders").Range("A1").PasteSpecial xlPasteValues
 
 
+Autofilter copy
+Selection.AutoFilter Field:=13, Criteria1:="<>08 - Dealer Deductions", Criteria2:="<>*13 - Min*", Operator:=xlAnd
+Workbooks("04. mm yy Dealer Transaction").Sheets("working").Range("A2:A" & LastRow).Copy
+Workbooks("02. mm yy Client Reconciliation").Sheets("Data").Activate
+Range("A1048576").End(xlUp).Offset(1, 0).Select
+Selection.PasteSpecial xlPasteValues
+
+
+
+

@@ -86,7 +86,22 @@ Copy
 Workbooks("ECCP").Sheets("NCSPAYU").Range("A:I").Copy Workbooks("Import Expense Model").Sheets("NCSPAYU").Range("A:I")
 
 
+Copy worksheet and create new sheet
+Worksheets("Sheet1").Copy After:=Worksheets("Sheet3")
 
+Copy entire
+Range("B:B").copy Range("A:A")
+
+Formula copy and paste
+LastRow = Range("N3").CurrentRegion.Rows.Count - 2
+Set my_range = Workbooks("YYYY_MM_NCHCKFR MMM YY Interchange").Sheets("Report 1").Range("O3:R" & LastRow)
+my_range.PasteSpecial Paste:=xlPasteFormulas, Operation:=xlNone
+
+
+Copy Formats
+Selection.AutoFilter Field:=9, Criteria1:="Moschetto, Damon "
+Selection.Copy
+Workbooks("Commission - Damon Moschetto Model").Sheets("Orders").Range("A1").PasteSpecial xlPasteValues
 
 
 

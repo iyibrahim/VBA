@@ -1,1 +1,3 @@
 Application.Run "'Commission - Barry Bleuer Model.xlsm'!Filtercopy"
+
+Application.Run "'C:\Users\davib\Desktop\worksheet\3. JFI\Files from Vantiv\ECCP Interchange 1st\YYYY_MM_NCHCKFR MMM YY Interchange.xlsm'!RunNCHCKFR"

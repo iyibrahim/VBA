@@ -1,0 +1,13 @@
+LastRow = Range("A3").CurrentRegion.Rows.Count
+
+LR = Range("A1").CurrentRegion.Rows.Count
+
+
+Lrow = Range("C2").CurrentRegion.Rows.Count
+Workbooks("1b. JFI_Monthly Revenue Worksheet").Sheets("ACH Unauthorized").Range("D3:F3").Copy
+Set my_range = Workbooks("1b. JFI_Monthly Revenue Worksheet").Sheets("ACH Unauthorized").Range("D4:F" & Lrow)
+ my_range.PasteSpecial Paste:=xlPasteFormulas, Operation:=xlNone
+
+
+LaRo = Range("B2").CurrentRegion.Rows.Count
+Workbooks("Import_Expense_").Sheets("Import_Expense").Range("A2:A" & LaRo) = Workbooks("Residual Process").Sheets("Residual Process").Range("C2").Value

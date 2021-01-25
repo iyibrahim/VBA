@@ -1,0 +1,32 @@
+Sub FetchNames()
+
+Dim mypath As String
+Dim myfile As String
+Dim r As Integer
+
+mypath = "C:\Users\davib\Desktop\worksheet\3. JFI\Files from Vantiv\Attachment Download\Attachment Final\"
+myfile = Dir(mypath & "*.*")
+
+   r = 3
+Do While myfile <> ""
+    Workbooks("outlook").Sheets("sheet2").Cells(r, 14).Value = myfile
+    r = r + 1
+    myfile = Dir
+Loop
+
+End Sub
+
+Sub Renamefiles()
+
+Dim mypath As String
+Dim r As Integer
+
+mypath = "C:\Users\davib\Desktop\worksheet\3. JFI\Files from Vantiv\Attachment Download\Attachment Final\"
+
+r = 3
+Do Until IsEmpty(Workbooks("outlook").Sheets("sheet2").Cells(r, 14)) And IsEmpty(Workbooks("outlook").Sheets("sheet2").Cells(r, 15))
+   Name mypath & Workbooks("outlook").Sheets("sheet2").Cells(r, 14).Value As mypath & Workbooks("outlook").Sheets("sheet2").Cells(r, 15).Value
+   r = r + 1
+Loop
+
+End Sub

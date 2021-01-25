@@ -1,0 +1,200 @@
+Option Explicit
+
+'App ---> Name Space --> inbox  ----> Items ----Mailitems --->Attachment
+Sub download_interchange()
+
+download_attachment
+FetchNameAttachment
+RenameFilesAttachment
+
+End Sub
+
+
+
+Sub download_attachment()
+
+Kill "C:\Users\davib\Desktop\worksheet\3. JFI\Files from Vantiv\Attachment Download\Attachment\*.*"
+
+
+Dim olApp As Outlook.Application
+Dim OlNS As Outlook.Namespace
+Dim OlFolder As Outlook.MAPIFolder
+Dim OlItem As Object
+Dim mailitem As Outlook.mailitem
+Dim OlAtt As Outlook.Attachment
+
+Set olApp = New Outlook.Application
+Set OlNS = olApp.GetNamespace("MAPI")
+
+Set OlFolder = OlNS.Folders("david.ibrahim@jonassoftware.com")
+Set OlFolder = OlFolder.Folders("inbox")
+
+For Each OlItem In OlFolder.Items
+
+    If OlItem.Class = olMail Then
+    Set mailitem = OlItem
+    
+    Debug.Print mailitem.Subject
+    Debug.Print mailitem.ReceivedTime
+    
+   ' mailitem.ReceivedTime > [Sheet1].[Date].Value &
+       If mailitem.Sender = [Sheet1].[Sender] And _
+       mailitem.ReceivedTime > [Sheet1].[Date].Value Then
+       
+    'InStr(mailitem.Subject, [Sheet1].[Subject].Value) <> 0 & _
+    'InStr(mailitem.Body, [Sheet1].[Email_Body].Value) <> 0 Then
+
+    
+    For Each OlAtt In mailitem.Attachments
+    
+         OlAtt.SaveAsFile ThisWorkbook.Path & "\Attachment" & "\" & OlAtt.Filename
+    
+    Next OlAtt
+
+    
+    End If
+    
+    End If
+
+Next OlItem
+
+Set OlFolder = Nothing
+Set OlNS = Nothing
+Set olApp = Nothing
+
+    
+
+End Sub
+
+Sub FetchNameAttachment()
+
+Dim mypath As String
+Dim myfile As String
+Dim r As Integer
+
+mypath = "C:\Users\davib\Desktop\worksheet\3. JFI\Files from Vantiv\Attachment Download\Attachment\"
+myfile = Dir(mypath & "*.*")
+
+   r = 3
+Do While myfile <> ""
+    Workbooks("outlook").Sheets("sheet1").Cells(r, 14).Value = myfile
+    r = r + 1
+    myfile = Dir
+Loop
+
+End Sub
+
+Sub RenameFilesAttachment()
+
+
+Dim mypath As String
+Dim r As Integer
+
+mypath = "C:\Users\davib\Desktop\worksheet\3. JFI\Files from Vantiv\Attachment Download\Attachment\"
+
+r = 3
+Do Until IsEmpty(Workbooks("outlook").Sheets("sheet1").Cells(r, 14)) And IsEmpty(Workbooks("outlook").Sheets("sheet1").Cells(r, 15))
+   Name mypath & Workbooks("outlook").Sheets("sheet1").Cells(r, 14).Value As mypath & Workbooks("outlook").Sheets("sheet1").Cells(r, 15).Value
+   r = r + 1
+Loop
+
+
+End Sub
+
+Sub download_Residaul()
+
+download_attachmentFinal
+FetchNames
+Renamefiles
+
+
+End Sub
+
+
+Sub download_attachmentFinal()
+
+
+Kill "C:\Users\davib\Desktop\worksheet\3. JFI\Files from Vantiv\Attachment Download\Attachment Final\*.*"
+
+Dim olApp As Outlook.Application
+Dim OlNS As Outlook.Namespace
+Dim OlFolder As Outlook.MAPIFolder
+Dim OlItem As Object
+Dim mailitem As Outlook.mailitem
+Dim OlAtt As Outlook.Attachment
+
+Set olApp = New Outlook.Application
+Set OlNS = olApp.GetNamespace("MAPI")
+
+Set OlFolder = OlNS.Folders("david.ibrahim@jonassoftware.com")
+Set OlFolder = OlFolder.Folders("inbox")
+
+For Each OlItem In OlFolder.Items
+
+    If OlItem.Class = olMail Then
+    Set mailitem = OlItem
+    
+    Debug.Print mailitem.Subject
+    Debug.Print mailitem.ReceivedTime
+    
+   'If mailitem.ReceivedTime > [Sheet2].[Date].Value
+   
+       If mailitem.Sender = "Pinnick, Jennifer" And _
+       mailitem.ReceivedTime > [Sheet2].[Date].Value Then
+     
+    'InStr(mailitem.Subject, [Sheet1].[Subject].Value) <> 0 & _
+    'InStr(mailitem.Body, [Sheet1].[Email_Body].Value) <> 0 Then
+
+    
+    For Each OlAtt In mailitem.Attachments
+    
+         OlAtt.SaveAsFile ThisWorkbook.Path & "\Attachment Final" & "\" & OlAtt.Filename
+    
+    Next OlAtt
+
+    
+    End If
+    
+    End If
+
+Next OlItem
+
+Set OlFolder = Nothing
+Set OlNS = Nothing
+Set olApp = Nothing
+
+    
+End Sub
+
+Sub FetchNames()
+
+Dim mypath As String
+Dim myfile As String
+Dim r As Integer
+
+mypath = "C:\Users\davib\Desktop\worksheet\3. JFI\Files from Vantiv\Attachment Download\Attachment Final\"
+myfile = Dir(mypath & "*.*")
+
+   r = 3
+Do While myfile <> ""
+    Workbooks("outlook").Sheets("sheet2").Cells(r, 14).Value = myfile
+    r = r + 1
+    myfile = Dir
+Loop
+
+End Sub
+
+Sub Renamefiles()
+
+Dim mypath As String
+Dim r As Integer
+
+mypath = "C:\Users\davib\Desktop\worksheet\3. JFI\Files from Vantiv\Attachment Download\Attachment Final\"
+
+r = 3
+Do Until IsEmpty(Workbooks("outlook").Sheets("sheet2").Cells(r, 14)) And IsEmpty(Workbooks("outlook").Sheets("sheet2").Cells(r, 15))
+   Name mypath & Workbooks("outlook").Sheets("sheet2").Cells(r, 14).Value As mypath & Workbooks("outlook").Sheets("sheet2").Cells(r, 15).Value
+   r = r + 1
+Loop
+
+End Sub

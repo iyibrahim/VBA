@@ -68,5 +68,11 @@ Range("A1048576").End(xlUp).Offset(1, 0).Select
 Selection.PasteSpecial xlPasteValues
 
 
+Row last
+LRow = Range("B2").CurrentRegion.Rows.Count
+Workbooks("Import Expense Model").Sheets("Import Expense2").Range("B2:I" & LRow).Copy
+Workbooks("Import_Expense_").Sheets("Import_Expense").Activate
+Range("B65536").End(xlUp).Offset(1, 0).Select
+Selection.PasteSpecial xlPasteValues
 
 

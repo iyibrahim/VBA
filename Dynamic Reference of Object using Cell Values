@@ -6,3 +6,21 @@ Worksheets(ActiveSheet.Range("B10").Value).Activate
 
 
 End Sub
+
+
+
+Sub Extractfilecontent()
+
+r = 6
+
+Do Until IsEmpty(Workbooks("Div Reporting Model").Sheets("File Directory").Cells(r, 6))
+
+Workbooks("Div Reporting Model").Worksheets("File Directory").Activate
+
+Worksheets(ActiveSheet.Cells(r, 6).Value).Activate
+
+
+
+Loop
+
+End Sub
